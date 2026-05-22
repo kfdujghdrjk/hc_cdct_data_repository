@@ -1,0 +1,51 @@
+project:
+  output_dir: "results"
+  seed: 123
+
+data:
+  dataset: "CIFAR10"
+  root: "data/raw"
+  batch_size_train: 128
+  batch_size_test: 100
+  num_workers: 2
+  download: true
+
+model:
+  name: "ResNet18"
+  num_classes: 10
+  checkpoint_path: "checkpoints/best.pth"
+  resume: true
+  data_parallel: true
+
+experiment:
+  embedding_layer: "layer1.1.conv2.weight"
+  block_size: 3
+  watermark_length: null      # null means n_blocks / repeat_factor
+  repeat_factor: 8
+  alpha: 0.8
+  dct_detail: 80
+  mme_detail: 80
+  payload_scale: 500
+  watermark_amplitude: 0.001
+  pruning_amounts: [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+
+compensation:
+  beta: 0.5
+  eps: 1.0e-12
+
+evaluation:
+  compute_accuracy: false
+  save_csv: true
+  result_csv: "results/tables/pruning_results.csv"
+
+
+finetuning_attack:
+  schemes: ["hc_cdct", "hc_space"]
+  learning_rates: [0.001, 0.005, 0.01]
+  epochs: 5
+  optimizer: "SGD"
+  momentum: 0.9
+  weight_decay: 5.0e-4
+  evaluate_each_epoch: true
+  save_csv: true
+  result_csv: "results/tables/finetuning_results.csv"
