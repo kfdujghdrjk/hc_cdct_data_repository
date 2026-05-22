@@ -1,0 +1,16 @@
+name: hc-cdct
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - pyyaml
+  - pytorch
+  - torchvision
+  - cudatoolkit
+  - pip
