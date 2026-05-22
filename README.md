@@ -138,7 +138,6 @@ Suggested statement:
 Before publishing the repository, confirm the following items:
 
 - [ ] The exact model checkpoint used in the paper is included or linked.
-- [ ] The `models`, `highDim`, and `torchQim` dependencies are included or documented.
 - [ ] The random seed in `configs/default.yaml` is fixed.
 - [ ] The final BER, distortion, pruning, and fine-tuning attack tables are placed under `results/tables/`.
 - [ ] The environment file matches the actual machine used for experiments.
